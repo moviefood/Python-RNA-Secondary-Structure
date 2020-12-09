@@ -10,12 +10,15 @@ from Bio import SeqIO
 def seq_snip(snp_file, seq_file):
     # read SNP file
     snp = pd.read_csv(snp_file, sep="\t")
+    # some initial data values we will want to have (the project manual will explain what each means):
     result = pd.DataFrame({"ENSEMBL_ID": [], "SNP": [], "SEQ": [], "SNP_SEQ": [], "SEQ_DB": [], "SNP_SEQ_DB": []})
     new_row = {}
     # read FASTA file for sequences
     fasta_dict = dict()
     #match sequence with info about sequence, seq_file is fasta file SNP file info about sequences
     with open(seq_file, "rt") as handle:
+        # This loop will create each SNP and append it
+        # along with the original RNA sequence to our result:
         for (key, value) in SeqIO.FastaIO.SimpleFastaParser(handle):
             new_row["ENSEMBL_ID"] = key
             new_row["SEQ"] = value
