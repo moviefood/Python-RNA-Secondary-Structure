@@ -1,6 +1,8 @@
 '''
 RNA Secondary Structure Visualizations using dash
 Able to choose which structure to visualize and select multiple for comparison
+Much of this is taken from https://dash.plotly.com/dash-bio/fornacontainer,
+with changes made to add a series of structures from a SEQ_DB.tsv file made by RN_Analyze.py
 '''
 import dash
 import dash_bio as dashbio
